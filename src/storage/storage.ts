@@ -10,6 +10,8 @@ class Storage {
   session = stores.session;
 
   constructor() {
+    // When the user closes the tab/window or navigates away,
+    // sync the storage objects to local/session storage.
     window.addEventListener("beforeunload", event => {
       this.sync();
     });
@@ -23,6 +25,7 @@ class Storage {
     };
   }
 
+  // Sync the storage objects to local/session storage.
   sync = () => {
     return sync(this.stores);
   };
